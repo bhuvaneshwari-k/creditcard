@@ -1,12 +1,12 @@
 package org.example;
 import java.util.logging.*;
 import java.util.*;
-class creditcard implements cloneable{
+class Creditcard implements cloneable{
     String cardnumber1="1202340456067808";
     String cardholdername;
     String cardnumber;
     String expirydate;
-    creditcard(String number,String name,String date){
+    Creditcard(String number,String name,String date){
         cardholdername=number;
         cardnumber=name;
         expirydate=date;
@@ -32,7 +32,7 @@ class creditcard implements cloneable{
         String number=s.nextLine();
         l.info("Enter expiration date:");
         String date=s.nextLine();
-        creditcard cc=new creditcard(name,number,date);
+        Creditcard cc=new Creditcard(name,number,date);
         l.info("The new credit card details are:-");
         l.log(Level.INFO, () -> "The card holder's name is:" +cc.cardholdername);
         l.log(Level.INFO, () -> "The card number is:" +cc.cardnumber);
@@ -45,7 +45,7 @@ class creditcard implements cloneable{
             l.info("your card number is not correct.");
 
         }
-        creditcard cc1=(creditcard)cc.clone();
+         Creditcard cc1=(Creditcard)cc.clone();
         l.info("The cloned credit card details are:-");
          l.log(Level.INFO, () -> "The card holder's name is:" +cc1.cardholdername);
          l.log(Level.INFO, () -> "The card number is:" +cc1.cardnumber);
