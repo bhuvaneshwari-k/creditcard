@@ -19,7 +19,7 @@ class Creditcard implements cloneable{
             return "false";
         }
     }
-    protected Object creditcard2() throws CloneNotSupportedException {
+    protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 
@@ -45,7 +45,7 @@ class Creditcard implements cloneable{
             l.info("your card number is not correct.");
 
         }
-         Creditcard cc1=(Creditcard)cc.creditcard2();
+         Creditcard cc1=(Creditcard)cc.clone();
         l.info("The cloned credit card details are:-");
          l.log(Level.INFO, () -> "The card holder's name is:" +cc1.cardholdername);
          l.log(Level.INFO, () -> "The card number is:" +cc1.cardnumber);
