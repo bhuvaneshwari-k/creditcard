@@ -2,6 +2,7 @@ package org.example;
 import java.util.logging.*;
 import java.util.*;
 class Creditcard implements cloneable{
+    Logger l=Logger.getLogger("com.api.jar");
     String cardnumber1="1202340456067808";
     String cardholdername;
     String cardnumber;
@@ -19,13 +20,17 @@ class Creditcard implements cloneable{
             return "false";
         }
     }
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    Creditcard cloneTest() {
+        try {
+            return (Creditcard) super.clone();
+        } catch (CloneNotSupportedException e) {
+            l.info("cloning not supported");
+            return this;
+        }
     }
-
-    public static void main(String[] args) throws CloneNotSupportedException{
+    public static void main(String[] args) {
         Scanner s=new Scanner(System.in);
-        static Logger l=Logger.getLogger("com.api.jar");
+        Logger l=Logger.getLogger("com.api.jar");
         l.info("Enter card holder's name:");
         String name=s.nextLine();
         l.info("Enter card number:");
@@ -45,11 +50,11 @@ class Creditcard implements cloneable{
             l.info("your card number is not correct.");
 
         }
-         Creditcard cc1=(Creditcard)cc.clone();
+        Creditcard cc1=cc.cloneTest();
         l.info("The cloned credit card details are:-");
-         l.log(Level.INFO, () -> "The card holder's name is:" +cc1.cardholdername);
-         l.log(Level.INFO, () -> "The card number is:" +cc1.cardnumber);
-         l.log(Level.INFO, () -> "The expiration date is:" +cc1.expirydate);
+        l.log(Level.INFO, () -> "The card holder's name is:" +cc1.cardholdername);
+        l.log(Level.INFO, () -> "The card number is:" +cc1.cardnumber);
+        l.log(Level.INFO, () -> "The expiration date is:" +cc1.expirydate);
     }
 
 }
